@@ -1,0 +1,18 @@
+# Login/session/customer data: never upload
+private/*
+!private/.gitkeep
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Diagnostics/logs
+*.log
+*.tmp
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

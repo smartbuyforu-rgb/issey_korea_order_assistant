@@ -1,0 +1,2 @@
+playwright>=1.50,<2
+deep-translator>=1.11,<2

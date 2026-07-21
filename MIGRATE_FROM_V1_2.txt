@@ -1,0 +1,8 @@
+1. Do not overwrite the old v1.2 folder.
+2. Extract v2 into a new folder.
+3. Copy old private\browser_profile into the new private folder if you want to reuse login.
+4. Run 01_INSTALL.bat.
+5. Run 02_LOGIN.bat if the copied session is expired.
+6. Edit config.json, especially the Google Sheets CSV exchange-rate URL.
+7. Run 03_TEST_COLLECTION.bat.
+8. Connect the new folder to a new GitHub repository with 04_CONNECT_GITHUB.bat.

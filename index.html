@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ISSEY MIYAKE 한국어 상품 카탈로그</title>
+<style>
+:root{--bg:#f3f2ef;--card:#fff;--line:#deddd8;--text:#1e1e1c;--muted:#787873;--green:#167a35;--red:#ad2b2b;--accent:#111}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,"Noto Sans KR",sans-serif}.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);padding:12px;backdrop-filter:blur(10px)}h1{margin:0;font-size:19px;text-align:center}.meta{display:flex;justify-content:center;gap:6px;overflow-x:auto;margin-top:8px}.pill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 8px;font-size:11px;white-space:nowrap}.tools{display:grid;grid-template-columns:minmax(150px,1fr) repeat(3,auto);gap:7px;max-width:980px;margin:10px auto 0}.tools input,.tools select,.tools button{height:38px;border:1px solid #c9c8c2;background:#fff;border-radius:10px;padding:0 10px;font-size:12px}.tools button{cursor:pointer;font-weight:700}.tools button.active{background:#1f6f37;color:#fff;border-color:#1f6f37}.notice{max-width:980px;margin:10px auto 0;padding:0 10px;color:var(--muted);font-size:11px;line-height:1.5;text-align:center}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;max-width:1280px;margin:0 auto;padding:10px}.card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.04)}.image{position:relative;display:block;aspect-ratio:4/5;background:#ecebe7;overflow:hidden}.image img{width:100%;height:100%;object-fit:cover;display:block}.badge{position:absolute;top:7px;left:7px;border-radius:999px;padding:4px 7px;background:#111;color:#fff;font-size:9px;font-weight:700}.sold{background:#858580}.special{left:auto;right:7px;background:#8c1c1c}.body{display:flex;flex-direction:column;flex:1;padding:9px}.vendor{font-size:9px;color:#5f5f5a;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.title-ko{font-weight:800;font-size:13px;line-height:1.35;margin-top:5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.title-ja{font-size:9px;line-height:1.35;color:#8a8983;margin-top:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.price-krw{font-size:16px;font-weight:900;margin-top:9px}.price-jpy{font-size:10px;color:#767670;margin-top:2px}.stock{display:flex;justify-content:space-between;gap:6px;margin-top:8px;font-size:10px}.stock .yes{color:var(--green);font-weight:800}.stock .no{color:var(--red);font-weight:800}.detail{display:block;text-align:center;text-decoration:none;background:#191918;color:#fff;border-radius:8px;padding:9px;margin-top:auto;font-size:11px;font-weight:800}.empty{max-width:700px;margin:60px auto;padding:28px;text-align:center;background:#fff;border:1px solid var(--line);border-radius:14px}.footer{padding:24px 12px;text-align:center;color:var(--muted);font-size:10px;line-height:1.5}@media(min-width:720px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(min-width:1100px){.grid{grid-template-columns:repeat(5,minmax(0,1fr))}}@media(max-width:580px){.tools{grid-template-columns:1fr 1fr}.tools input{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<header class="top">
+<h1 id="siteTitle">ISSEY MIYAKE 한국어 상품 카탈로그</h1>
+<div class="meta">
+  <span id="count" class="pill">상품 0개</span>
+  <span id="updated" class="pill">수집 전</span>
+  <span id="rate" class="pill">환율 -</span>
+  <span id="formula" class="pill">4% + 25,000원</span>
+</div>
+<div class="tools">
+  <input id="search" type="search" placeholder="상품명·브랜드·상품번호 검색">
+  <select id="brand"><option value="ALL">전체 브랜드</option></select>
+  <select id="category"><option value="ALL">전체 분류</option></select>
+  <button id="stockOnly" type="button">재고만</button>
+</div>
+</header>
+<p class="notice">표시 가격은 일본 판매가에 설정 환율을 적용한 예상가입니다. 실제 재고·환율·결제금액은 주문 직전에 다시 확인해야 합니다.</p>
+<main id="grid" class="grid"></main>
+<div id="empty" class="empty" hidden>표시할 상품이 없습니다. 먼저 <b>03_TEST_COLLECTION.bat</b>을 실행하세요.</div>
+<footer class="footer">상품 이미지·상표·설명의 권리는 각 권리자에게 있습니다. 로그인 정보와 고객정보는 공개 페이지에 포함되지 않습니다.</footer>
+<script src="data/catalog.js"></script>
+<script>
+const payload=window.__ISSEY_CATALOG__||{products:[]};
+const products=payload.products||[];
+const $=id=>document.getElementById(id);
+const won=v=>Number.isFinite(Number(v))?Number(v).toLocaleString('ko-KR')+'원':'가격 확인';
+const yen=v=>Number.isFinite(Number(v))?'¥'+Number(v).toLocaleString('ja-JP'):'-';
+$('siteTitle').textContent=payload.site_title||'ISSEY MIYAKE 한국어 상품 카탈로그';
+$('count').textContent='상품 '+products.length.toLocaleString('ko-KR')+'개';
+$('updated').textContent=payload.generated_at||'수집 전';
+const fx=payload.exchange_rate||{};
+$('rate').textContent='1엔 = '+(Number(fx.rate)||0).toFixed(4)+'원 · '+(fx.source||'환율 미설정');
+const pricing=payload.pricing||{};
+$('formula').textContent=(pricing.markup_percent??4)+'% + '+Number(pricing.fixed_fee_krw??25000).toLocaleString('ko-KR')+'원';
+
+const brandValues=[...new Set(products.map(p=>p.vendor||'기타'))].sort();
+brandValues.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;$('brand').appendChild(o)});
+const categoryValues=[...new Set(products.map(p=>p.product_type||'기타'))].sort();
+categoryValues.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;$('category').appendChild(o)});
+let stockOnly=false;
+function render(){
+  const q=$('search').value.trim().toLowerCase();
+  const brand=$('brand').value, category=$('category').value;
+  const filtered=products.filter(p=>{
+    const hay=[p.vendor,p.title_ko,p.title_ja,p.handle,p.product_type,(p.tags||[]).join(' ')].join(' ').toLowerCase();
+    return (!q||hay.includes(q))&&(brand==='ALL'||(p.vendor||'기타')===brand)&&(category==='ALL'||(p.product_type||'기타')===category)&&(!stockOnly||p.available);
+  });
+  $('grid').innerHTML='';
+  $('empty').hidden=filtered.length>0;
+  filtered.forEach(p=>{
+    const a=document.createElement('article');a.className='card';
+    const url='detail.html?handle='+encodeURIComponent(p.handle||'');
+    const image=p.image?`<img src="${escapeAttr(p.image)}" alt="${escapeAttr(p.title_ko||p.title_ja||'상품')}" loading="lazy">`:'';
+    const inCount=(p.variants||[]).filter(v=>v.available).length;
+    a.innerHTML=`<a class="image" href="${url}">${image}<span class="badge ${p.available?'':'sold'}">${p.available?'재고 있음':'품절'}</span>${p.special_price?'<span class="badge special">SPECIAL</span>':''}</a>
+      <div class="body"><div class="vendor">${esc(p.vendor||'ISSEY MIYAKE')}</div><div class="title-ko">${esc(p.title_ko||p.title_ja||'상품명 없음')}</div><div class="title-ja">${esc(p.title_ja||'')}</div><div class="price-krw">${won(p.price_krw)}</div><div class="price-jpy">일본 판매가 ${yen(p.price_jpy)}</div><div class="stock"><span class="${p.available?'yes':'no'}">${p.available?'구매 가능':'현재 품절'}</span><span>옵션 ${inCount}/${(p.variants||[]).length}</span></div><a class="detail" href="${url}">상품 상세·주문 요청</a></div>`;
+    $('grid').appendChild(a);
+  });
+}
+function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function escapeAttr(v){return esc(v)}
+$('search').addEventListener('input',render);$('brand').addEventListener('change',render);$('category').addEventListener('change',render);$('stockOnly').addEventListener('click',()=>{stockOnly=!stockOnly;$('stockOnly').classList.toggle('active',stockOnly);render()});
+render();
+</script>
+</body>
+</html>

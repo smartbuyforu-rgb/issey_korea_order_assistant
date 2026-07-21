@@ -1,0 +1,19 @@
+{
+  "generated_at": "아직 수집하지 않음",
+  "product_count": 0,
+  "exchange_rate": {
+    "rate": 9.3,
+    "source": "config.json 수동 환율",
+    "updated_at": "-",
+    "is_fallback": true
+  },
+  "pricing": {
+    "markup_percent": 4,
+    "fixed_fee_krw": 25000,
+    "round_unit": 1000,
+    "round_mode": "ceil"
+  },
+  "quote_url": "https://blog.naver.com/pilkyu01/224353040280",
+  "site_title": "ISSEY MIYAKE 한국어 상품 카탈로그",
+  "products": []
+}

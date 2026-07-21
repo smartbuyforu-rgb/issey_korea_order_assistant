@@ -1,0 +1,37 @@
+{
+  "site_base_url": "https://www.isseymiyake.com",
+  "landing_url": "https://www.isseymiyake.com/collections/special-price",
+  "product_json_urls": [
+    "https://www.isseymiyake.com/products.json",
+    "https://www.isseymiyake.com/collections/special-price/products.json"
+  ],
+  "collection_urls": [
+    "https://www.isseymiyake.com/collections/special-price"
+  ],
+  "site_title": "ISSEY MIYAKE 한국어 상품 카탈로그",
+  "refresh_minutes": 15,
+  "browser_channel": "chrome",
+  "headless_collect": true,
+  "max_pages": 20,
+  "page_limit": 250,
+  "request_delay_seconds": 0.5,
+  "product_delay_seconds": 0.3,
+  "detail_refresh_hours": 168,
+  "max_new_detail_pages_per_run": 25,
+  "git_branch": "main",
+  "github_pages_base_url": "",
+  "quote_url": "https://blog.naver.com/pilkyu01/224353040280",
+  "translation": {
+    "enabled": true,
+    "translate_descriptions": false,
+    "max_new_translations_per_run": 30
+  },
+  "pricing": {
+    "google_sheet_csv_url": "",
+    "manual_jpy_krw": 9.30,
+    "markup_percent": 4.0,
+    "fixed_fee_krw": 25000,
+    "round_unit": 1000,
+    "round_mode": "ceil"
+  }
+}
